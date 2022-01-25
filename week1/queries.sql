@@ -11,17 +11,21 @@ SELECT date(tpep_pickup_datetime), max(tip_amount) as largest_tip_of_a_day
 	ORDER BY date(tpep_pickup_datetime);
 
 -- Largest tip in January
-SELECT max(tip_amount) as largest_tip_jan
-	FROM public.yellow_taxi_trips
-	WHERE
-		EXTRACT(MONTH from date(tpep_pickup_datetime)) = 1;
-
--- Largest tip January 2021
-SELECT max(tip_amount) as largest_tip_jan
+SELECT date(tpep_pickup_datetime), tip_amount as largest_tip_jan
 	FROM public.yellow_taxi_trips
 	WHERE
 		EXTRACT(MONTH from date(tpep_pickup_datetime)) = 1
-		AND EXTRACT(YEAR from date(tpep_pickup_datetime)) = 2021;
+	ORDER BY tip_amount DESC
+	LIMIT 1;
+
+-- Largest tip January 2021
+SELECT date(tpep_pickup_datetime), tip_amount as largest_tip_jan
+	FROM public.yellow_taxi_trips
+	WHERE
+		EXTRACT(MONTH from date(tpep_pickup_datetime)) = 1
+		AND EXTRACT(YEAR from date(tpep_pickup_datetime)) = 2021
+	ORDER BY tip_amount DESC
+	LIMIT 1;
 
 -- Question 5
 SELECT dropoff_zone."Zone" as destination, count(1) as number_of_rides
