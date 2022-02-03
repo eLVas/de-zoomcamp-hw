@@ -20,6 +20,7 @@ with DAG(
         schedule_interval=None,
         start_date=days_ago(0),
         catchup=False,
+        tags=['dtc-de']
     ) as dag:
         local_file_path = common.path_to_local_home + '/' + base_file_name
         local_file_path_csv = local_file_path + ".csv"

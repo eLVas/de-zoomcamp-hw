@@ -22,7 +22,6 @@ default_args = {
     "depends_on_past": False,
     "max_active_runs": 1,
     "retries": 1,
-    "tags": ['dtc-de'],
 }
 
 default_args_rides_ingestion = {

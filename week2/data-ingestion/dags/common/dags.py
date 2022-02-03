@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
@@ -9,12 +7,12 @@ from common import *
 
 
 def define_ny_taxi_data_ingestion_dag(dag_id, dataset_name, dataset_base_file_name, default_args):
-
     dataset_base_file_url = dataset_base_url_trip_data + dataset_base_file_name
 
     dag = DAG(
         dag_id=dag_id,
         default_args=default_args,
+        tags=['dtc-de'],
     )
 
     # NOTE: DAG declaration - using a Context Manager (an implicit way)
