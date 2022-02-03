@@ -20,7 +20,6 @@ date_string_month_template = "{{ dag_run.logical_date.strftime('%Y-%m') }}"
 default_args = {
     "owner": USER,
     "depends_on_past": False,
-    "max_active_runs": 1,
     "retries": 1,
 }
 
