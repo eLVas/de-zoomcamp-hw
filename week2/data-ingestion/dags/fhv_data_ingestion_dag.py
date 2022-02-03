@@ -7,12 +7,10 @@ dag_id = "fhv_data_ingestion"
 
 # fhv_tripdata_yyyy-mm.csv
 dataset_base_file_name = "fhv_tripdata_"
+dataset_name = "fhv_trips"
 
-default_args = {
-    "owner": common.USER,
-    "start_date": common.start_date,
-    "depends_on_past": False,
-    "retries": 1,
-}
-
-dag = define_ny_taxi_data_ingestion_dag(dag_id, "fhv_trips", dataset_base_file_name, default_args)
+dag = define_ny_taxi_data_ingestion_dag(
+    dag_id,
+    dataset_name,
+    dataset_base_file_name,
+    common.default_args_rides_ingestion)

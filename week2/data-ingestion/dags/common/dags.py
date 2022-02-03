@@ -13,11 +13,7 @@ def define_ny_taxi_data_ingestion_dag(dag_id, dataset_name, dataset_base_file_na
 
     dag = DAG(
         dag_id=dag_id,
-        schedule_interval="@monthly",
         default_args=default_args,
-        catchup=True,
-        max_active_runs=1,
-        tags=['dtc-de'],
     )
 
     # NOTE: DAG declaration - using a Context Manager (an implicit way)
