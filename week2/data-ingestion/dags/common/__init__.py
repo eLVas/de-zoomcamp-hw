@@ -26,6 +26,4 @@ default_args = {
 default_args_rides_ingestion = {
     **default_args,
     "start_date": start_date,
-    "schedule_interval": "@monthly",
-    "catchup": True,
 }

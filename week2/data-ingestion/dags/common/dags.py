@@ -11,6 +11,8 @@ def define_ny_taxi_data_ingestion_dag(dag_id, dataset_name, dataset_base_file_na
 
     dag = DAG(
         dag_id=dag_id,
+        schedule_interval="@monthly",
+        catchup=True,
         default_args=default_args,
         max_active_runs=1,
         tags=['dtc-de'],
@@ -37,7 +39,7 @@ def define_ny_taxi_data_ingestion_dag(dag_id, dataset_name, dataset_base_file_na
         )
 
         gcs_file_path = "raw/" + dataset_name + \
-                        "/{{ dag_run.logical_date.year }}/{{ dag_run.logical_date.strftime('%m') }}.parquet"
+                        "/year={{ dag_run.logical_date.year }}/{{ dag_run.logical_date.strftime('%m') }}.parquet"
 
         local_to_gcs_task = PythonOperator(
              task_id="local_to_gcs_task",
