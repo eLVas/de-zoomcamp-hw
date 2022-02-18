@@ -1,0 +1,3 @@
+[submodule "week4/de_zoomcamp_week4_dbt"]
+	path = week4/de_zoomcamp_week4_dbt
+	url = git@github.com:eLVas/de_zoomcamp_week4_dbt.git
